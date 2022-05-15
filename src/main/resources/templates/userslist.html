@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All users</title>
+</head>
+<body>
+<h1></h1>
+<div>
+  <table border="5">
+    <caption>
+      <h1>LIST</h1>
+    </caption>
+
+    <style>
+      table.iksweb th{text-decoration: none;border-collapse:collapse;width:auto;text-align:center;}
+      table.iksweb th{font-weight:normal;font-size:19px; color:#ffffff;background-color:#faa700;}
+      table.iksweb td{font-size:20px;color:#0f4369;}
+      table.iksweb td,table.iksweb th{white-space:pre-wrap;padding:5px 22px;line-height:20px;vertical-align: middle;border: 2px solid #000000;}
+      table.iksweb tr:hover{background-color:#fffb80}
+      table.iksweb tr:hover td{color:#060708;cursor:default;}
+    </style>
+
+    <table class="iksweb">
+      <tr><th> ID </th>
+        <th> Name </th>
+        <th> Lastname </th>
+        <th> E-mail </th>
+        <th> Edit </th>
+        <th> Delete </th></tr>
+    </tr>
+    <tr th:each  = "user : ${users}">
+      <td th:text = "${user.getId}">ID</td>
+      <td th:text = "${user.getFirstName}">Name</td>
+      <td th:text = "${user.getLastName}">Surname</td>
+      <td th:text = "${user.getEmail}">Email</td>
+      <td> <a th:href="@{/users/{id}/edit(id=${user.getId})}">Edit</a></td>
+      </form></td>
+      <td> <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId})}">
+        <input type="submit" value="Delete"/>
+      </form></td>
+      </H1>
+    </tr>
+  </table>
+</div>
+<br/>
+<hr/>
+<a href ="/users/new"><H1 style="font-size: 120%; font-family: Verdana, Arial, Helvetica, sans-serif; color: #336">Create new user</H1></a>
+</body>
+</html>
